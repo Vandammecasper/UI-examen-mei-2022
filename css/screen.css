@@ -1,10 +1,44 @@
 /*------------------------------------*\
   #FONTS
 \*------------------------------------*/
+html{
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: "Inter Web", Arial, Helvetica, sans-serif;
+    color: #111;
+    padding: 24px 24px 0;
+    scroll-behavior: smooth; /*om het scrollen vloeiender te maken*/
+    -webkit-font-smoothing: antialised;
+    -moz-osx-font-smoothing: grayscale; /*vendor prefixes voor Chrome & Safari en Firefox*/
+}
 
+@font-face {
+    font-family: "Inter Web";
+    font-weight: 500;
+    src: url("../fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter Web";
+    font-weight: 700;
+    src: url("../fonts/Inter-Bold.woff2") format("woff2");
+}
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
+body{
+    background: khaki; /*achtergrond kleur*/
+}
+
+@media (min-width: 768px){ /*voor grotere devices (tablets, 768 px and up)*/
+    h1{
+        font-size: 58px;
+        line-height: 64px;
+    }
+    html{
+        padding: 48 px 48 px 24 px;
+    }
+}
 
 /*------------------------------------*\
   #Elements
@@ -15,12 +49,38 @@
     ---
     Default markup for images to make them responsive
 */
+img{
+    max-width: 100%; /*zorgt ervoor dat een afbeelding nooit te breed wordt*/
+    vertical-align: top; /*zorgt ervoor dat afbeeldingen van boven gealigneerd worden*/
+}
 
 /*
     Elements: typography
     ---
     Default markup for typographic elements
 */
+::selection {
+    background: #44c8f5;
+    /*kleur voor wanneer tekst geselecteerd wordt*/
+    color: white;
+}
+
+a{
+    color: royalblue; /*basis leggen van alle links*/
+    transition: all.1s ease-in-out; 
+}
+
+a:hover,
+a:focus{
+    color: crimson; /*basis leggen van alle links op hoveren over link en tab op link*/
+}
+
+a:visited,
+a:active {
+    color: blueviolet;
+    /*wanneer een link reeds bezocht is of wanneer deze geactiveerd wordt   */
+}
+
 
 /*------------------------------------*\
   #OBJECTS
@@ -31,6 +91,10 @@
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
 */
+.o-row{
+    padding: 24px 24px 0;
+    display: flow-root;
+}
 
 /* size modifiers */
 
@@ -47,6 +111,7 @@
     contains the basic structural elements, but classes should be complemented
     with width utilities
 */
+
 
 /* gutter modifiers, these affect o-layout__item too */
 
@@ -123,12 +188,20 @@
     ---
     Utility classes to put specific margins and paddings onto elements
 */
+*+h2{ /*wanneer je wil dat het alleen toegepast wordt wanneer h2 in dit geval niet als eerste komt*/
+    margin-top: 48px;
+}
 
 /*
     Utilities: max-width
     ---
     Utility classes to put specific max widths onto elements
 */
+body {
+    max-width: 42em;
+    /*bepalen van maximum breedte en centreren van de tekst*/
+    margin: 0 auto;
+}
 
 /*
     Utility: Flex
@@ -175,3 +248,36 @@
     Inlined to avoid the additional HTTP request:
     http://www.phpied.com/delay-loading-your-print-css/
 */
+
+/*
+    components : author
+*/
+.c-author{
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.c-author__image { /*maakt een cirkelvorm van afbeelding*/
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+}
+
+.c-author__name,
+.c-author__meta{
+    margin-bottom: 0;
+}
+
+.c-author__meta{
+    font-size: 14px;
+    font-family: "inter", "helvetica neue", Arial, Helvetica, sans-serif;
+    line-height: 24px;
+    margin-top: 4px;
+}
+
+.c-author__name{
+    font-size: 16px;
+    line-height: 24px;
+}
